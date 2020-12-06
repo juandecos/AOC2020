@@ -8,12 +8,18 @@ namespace AOC2020
     {
         public override object SolveOne()
         {
-            return 0;
+            return GroupRows().Sum(x =>
+                String.Join("", x).ToCharArray()
+                    .Distinct()
+                    .Count());
         }
 
         public override object SolveTwo()
         {
-            return 0;
+            return GroupRows().Sum(x =>
+                String.Join("", x).ToCharArray()
+                    .GroupBy(y => y)
+                    .Count(y => y.Count() == x.Count()));
         }
     }
 }

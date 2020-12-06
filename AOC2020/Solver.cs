@@ -30,6 +30,24 @@ namespace AOC2020
             Console.WriteLine(SolveTwo().ToString());
             Console.WriteLine("-------- DONE --------");
         }
+
+        public List<List<string>> GroupRows()
+        {
+            var data = new List<List<string>>
+            {
+                new List<string>()
+            };
+            foreach (var row in Rows)
+            {
+                if (row.Length == 0)
+                {
+                    data.Add(new List<string>());
+                    continue;
+                }
+                data.Last().Add(row);
+            }
+            return data;
+        }
     }
 
     [System.AttributeUsage(System.AttributeTargets.Class | System.AttributeTargets.Struct)]
