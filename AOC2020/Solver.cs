@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AOC2020
 {
@@ -11,7 +10,7 @@ namespace AOC2020
 
         public Solver()
         {
-            DayAttribute attribute = (DayAttribute)Attribute.GetCustomAttribute(this.GetType(), typeof(DayAttribute));
+            DayAttribute attribute = (DayAttribute)Attribute.GetCustomAttribute(GetType(), typeof(DayAttribute));
             string input = Properties.Resources.ResourceManager.GetString("Input" + attribute.Day.ToString().PadLeft(2, '0'));
             Rows = input.Split(new[] { "\r\n" }, StringSplitOptions.None).ToList();
         }
@@ -31,27 +30,25 @@ namespace AOC2020
             Console.WriteLine("-------- DONE --------");
         }
 
-        public List<List<string>> GroupRows()
+        public IEnumerable<List<string>> GroupRows()
         {
-            var data = new List<List<string>>
-            {
-                new List<string>()
-            };
+            var group = new List<string>();
             foreach (var row in Rows)
             {
-                if (row.Length == 0)
+                if (row.Length != 0)
                 {
-                    data.Add(new List<string>());
+                    group.Add(row);
                     continue;
                 }
-                data.Last().Add(row);
+                yield return group;
+                group.Clear();
             }
-            return data;
+            yield return group;
         }
     }
 
-    [System.AttributeUsage(System.AttributeTargets.Class | System.AttributeTargets.Struct)]
-    public class DayAttribute : System.Attribute
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct)]
+    public class DayAttribute : Attribute
     {
         public int Day { get; set; }
 
