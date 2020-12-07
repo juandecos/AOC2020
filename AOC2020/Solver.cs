@@ -47,6 +47,14 @@ namespace AOC2020
         }
     }
 
+    public static class SolverExtensions
+    {
+        public static string[] Split(this string input, string delimiter)
+        {
+            return input.Split(new string[] { delimiter }, StringSplitOptions.None);
+        }
+    }
+
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct)]
     public class DayAttribute : Attribute
     {
