@@ -12,7 +12,7 @@ namespace AOC2020
         {
             DayAttribute attribute = (DayAttribute)Attribute.GetCustomAttribute(GetType(), typeof(DayAttribute));
             string input = Properties.Resources.ResourceManager.GetString("Input" + attribute.Day.ToString().PadLeft(2, '0'));
-            Rows = input.Split(new[] { "\r\n" }, StringSplitOptions.None).ToList();
+            Rows = input.Split("\r\n").ToList();
         }
 
         public abstract object SolveOne();
