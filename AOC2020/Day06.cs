@@ -9,7 +9,7 @@ namespace AOC2020
         public override object SolveOne()
         {
             return GroupRows().Sum(x =>
-                String.Join("", x).ToCharArray()
+                string.Join("", x).ToCharArray()
                     .Distinct()
                     .Count());
         }
@@ -17,7 +17,7 @@ namespace AOC2020
         public override object SolveTwo()
         {
             return GroupRows().Sum(x =>
-                String.Join("", x).ToCharArray()
+                string.Join("", x).ToCharArray()
                     .GroupBy(y => y)
                     .Count(y => y.Count() == x.Count()));
         }

@@ -6,13 +6,10 @@ namespace AOC2020
     [Day(9)]
     class Day09 : Solver
     {
-        readonly List<long> LongRows = new List<long>();
-
         const int Preamble = 25;
 
         public Day09()
         {
-            LongRows = Rows.ConvertAll(x => long.Parse(x));
         }
 
         public override object SolveOne()

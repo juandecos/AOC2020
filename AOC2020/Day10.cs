@@ -6,13 +6,11 @@ namespace AOC2020
     [Day(10)]
     class Day10 : Solver
     {
-        public List<int> Data = new List<int>();
         public int Max = 0;
 
         public Day10()
         {
-            Data = Rows.Select(x => int.Parse(x)).ToList();
-            Max = Data.Max();
+            Max = IntRows.Max();
         }
 
         public override object SolveOne()
@@ -25,7 +23,7 @@ namespace AOC2020
                 {
                     return hops[0] * (hops[2] + 1);
                 }
-                int next = Data.Where(x => x > joltage).Min();
+                int next = IntRows.Where(x => x > joltage).Min();
                 hops[next - joltage - 1]++;
                 joltage = next;
             }
@@ -44,7 +42,7 @@ namespace AOC2020
             {
                 return 1;
             }
-            return Data.Where(x => x > current && x <= current + 3).Sum(x =>
+            return IntRows.Where(x => x > current && x <= current + 3).Sum(x =>
             {
                 if (!Memo.ContainsKey(x))
                     Memo[x] = CountPaths(x);

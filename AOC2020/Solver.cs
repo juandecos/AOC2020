@@ -7,12 +7,16 @@ namespace AOC2020
     public abstract class Solver
     {
         public List<string> Rows { get; set; }
+        public List<long> LongRows { get; set; }
+        public List<int> IntRows { get; set; }
 
         public Solver()
         {
             DayAttribute attribute = (DayAttribute)Attribute.GetCustomAttribute(GetType(), typeof(DayAttribute));
             string input = Properties.Resources.ResourceManager.GetString("Input" + attribute.Day.ToString().PadLeft(2, '0'));
             Rows = input.Split("\r\n").ToList();
+            LongRows = Rows.ConvertAll(x => long.TryParse(x, out long n) ? n : 0);
+            IntRows = Rows.ConvertAll(x => int.TryParse(x, out int n) ? n : 0);
         }
 
         public abstract object SolveOne();
