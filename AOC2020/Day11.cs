@@ -80,11 +80,8 @@ namespace AOC2020
                     return true;
                 if (nextChar == 'L' || nextChar == 'Z')
                     return false;
-                if (nextChar == '.')
-                {
-                    x += dx;
-                    y += dy;
-                }
+                x += dx;
+                y += dy;
             }
         }
 
