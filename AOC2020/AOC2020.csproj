@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +49,8 @@
     <Compile Include="Day03.cs" />
     <Compile Include="Day04.cs" />
     <Compile Include="Day05.cs" />
+    <Compile Include="DayX.cs" />
+    <Compile Include="Day13.cs" />
     <Compile Include="Day12.cs" />
     <Compile Include="Day11.cs" />
     <Compile Include="Day10.cs" />
