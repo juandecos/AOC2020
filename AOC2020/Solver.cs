@@ -44,7 +44,7 @@ namespace AOC2020
                     group.Add(row);
                     continue;
                 }
-                yield return group;
+                yield return group.ConvertAll(x => x);
                 group.Clear();
             }
             yield return group;
