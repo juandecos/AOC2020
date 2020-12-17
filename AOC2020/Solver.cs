@@ -57,6 +57,16 @@ namespace AOC2020
         {
             return input.Split(new string[] { delimiter }, StringSplitOptions.None);
         }
+
+        public static TValue Get<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key) where TValue : new()
+        {
+            if (!dictionary.TryGetValue(key, out TValue value))
+            {
+                value = new TValue();
+                dictionary.Add(key, value);
+            }
+            return value;
+        }
     }
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct)]
