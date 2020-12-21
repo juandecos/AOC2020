@@ -58,6 +58,24 @@ namespace AOC2020
             return input.Split(new string[] { delimiter }, StringSplitOptions.None);
         }
 
+        public static IEnumerable<TResult> IntersectMany<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, IEnumerable<TResult>> selector)
+        {
+            using (var enumerator = source.GetEnumerator())
+            {
+                if (!enumerator.MoveNext())
+                    return new TResult[0];
+
+                var ret = selector(enumerator.Current);
+
+                while (enumerator.MoveNext())
+                {
+                    ret = ret.Intersect(selector(enumerator.Current));
+                }
+
+                return ret;
+            }
+        }
+
         public static TValue Get<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key) where TValue : new()
         {
             if (!dictionary.TryGetValue(key, out TValue value))
