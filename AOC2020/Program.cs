@@ -6,7 +6,7 @@ namespace AOC2020
     {
         static void Main(string[] args)
         {
-            var solver = new Day23();
+            var solver = new Day24();
             solver.SolveAndPrintOne();
             solver.SolveAndPrintTwo();
             Console.ReadKey();
