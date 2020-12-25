@@ -1,28 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace AOC2020
+﻿namespace AOC2020
 {
     [Day(25)]
     class Day25 : Solver
     {
         public override object SolveOne()
         {
-            for (int i = 0; i < Rows.Count; i++)
+            int cardPublicKey = int.Parse(Rows[0]), doorPublicKey = int.Parse(Rows[1]);
+            int cardPublicKeyAttempt = StepTransform(7, 1);
+            int encryptionKey = 1;
+            while (cardPublicKeyAttempt != cardPublicKey)
             {
-                var row = Rows[i];
+                cardPublicKeyAttempt = StepTransform(7, cardPublicKeyAttempt);
+                encryptionKey = StepTransform(doorPublicKey, encryptionKey);
             }
-            return 0;
+            return StepTransform(doorPublicKey, encryptionKey);
         }
+
+        int StepTransform(int subjectNumber, int lastValue) => (int)(((long)lastValue * subjectNumber) % 20201227);
 
         public override object SolveTwo()
         {
-            for (int i = 0; i < Rows.Count; i++)
-            {
-                var row = Rows[i];
-            }
-            return 0;
+            return "Merry Christmas!";
         }
     }
 }
